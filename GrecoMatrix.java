@@ -5,7 +5,7 @@ import java.util.List;
  * GrecoMatrix.java
  *
  * Authors: Jack Greco
- * Date: 2-24-21
+ * Date: 4-30-21
  * -JMG
  */
 public class GrecoMatrix {
@@ -14,8 +14,7 @@ public class GrecoMatrix {
     private int columns;
     private double[][] data;
 
-    //CONSTRUCTORS
-    //Simple Constructor
+    //constrctirs
     public GrecoMatrix(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
@@ -27,7 +26,7 @@ public class GrecoMatrix {
         }
     }
 
-    //HELPER-METHODS (all self explanatory)
+    //methods
     public double get(int row, int column){
         return this.data[row][column];
     }
@@ -58,7 +57,7 @@ public class GrecoMatrix {
     }
 
     //MAIN-METHODS
-    //this version of the add method increases all values in the data matrix by the inputted scalar value.
+    //increases matrix
     public void add(double scalar){
         for(int r = 0; r < this.rows; r++){
             for(int c = 0; c < this.columns; c++){
@@ -66,7 +65,7 @@ public class GrecoMatrix {
             }
         }
     }
-    //this version of the add method takes a matrix and adds each matching value to this matrix's data
+    //adds matching values
     public void add(GrecoMatrix matrix){
         if(this.columns != matrix.getColumns() || this.rows != matrix.getRows()){
             System.out.println("ADDITION ERROR: SIZE INCOMPATIBILITY");
@@ -78,7 +77,7 @@ public class GrecoMatrix {
             }
         }
     }
-    //this returns an exact copy of the inputted HughesMatrix
+    //makes a copy
     public static GrecoMatrix clone(GrecoMatrix matrix){
         GrecoMatrix toReturn = new GrecoMatrix(matrix.getRows(),matrix.getColumns());
         for(int r = 0; r < matrix.getRows(); r++){
@@ -88,7 +87,7 @@ public class GrecoMatrix {
         }
         return toReturn;
     }
-    //This returns a new matrix assembled by the element-based subtraction of a - b
+    //a-b new matrix
     public static GrecoMatrix subtract(GrecoMatrix a, GrecoMatrix b){
         if(a.getColumns() != b.getColumns() || a.getRows() != b.getRows()){
             System.out.println("SUBTRACTION ERROR: SIZE INCOMPATIBILITY");
@@ -102,7 +101,7 @@ public class GrecoMatrix {
         }
         return toReturn;
     }
-    //This version of the multiply method multiplies matrix a by matrix b and returns the resulting HughesMatrix
+    //multiply a and b to get matrix
     public static GrecoMatrix multiply(GrecoMatrix a, GrecoMatrix b){
         GrecoMatrix toReturn = new GrecoMatrix(a.getRows(), b.getColumns());
         for(int r = 0; r < a.getRows(); r++){
@@ -117,7 +116,7 @@ public class GrecoMatrix {
         }
         return toReturn;
     }
-    //this version of the multiply method multiplies every value in this HughesMatrix by an inputted scalar
+    //
     public void multiply(double scalar){
         for(int r = 0; r < this.rows; r++){
             for(int c = 0; c < this.columns; c++){
@@ -125,7 +124,7 @@ public class GrecoMatrix {
             }
         }
     }
-    //this version of the multiply method does ELEMENT-WISE multiplication of this HughesMatrix by the inputted HughesMatrix
+    //
     public void multiply(GrecoMatrix matrix){
         if(this.columns != matrix.getColumns() || this.rows != matrix.getRows()){
             System.out.println("ELEMENT MULTIPLICATION ERROR: SIZE INCOMPATIBILITY");
@@ -138,7 +137,7 @@ public class GrecoMatrix {
             }
         }
     }
-    //this is the sigmoid function--it implements the sigmoid curve as an initialization step for learning gradients
+    //implements curve/gradient
     public void initSigmoid(){
         for(int r = 0; r < this.rows; r++){
             for(int c = 0; c < this.columns; c++){
@@ -147,8 +146,7 @@ public class GrecoMatrix {
             }
         }
     }
-    //this is the derivative of sigmoid function--it returns a HughesMatrix after applying the derivative of sigmoid
-    //to this HughesMatrix
+    //derivitive
     public GrecoMatrix deriveSigmoid(){
         GrecoMatrix toReturn = new GrecoMatrix(this.rows,this.columns);
         for(int r = 0; r < this.rows; r++){
